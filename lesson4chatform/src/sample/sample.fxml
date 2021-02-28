@@ -15,4 +15,5 @@
     <Button fx:id="sendButton" onAction="#onClickBtnSend" text="Отправить" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="100"/>
     </HBox>
 
+
 </GridPane>
