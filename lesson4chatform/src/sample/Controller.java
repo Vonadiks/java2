@@ -19,14 +19,11 @@ public class Controller implements Initializable {
     @FXML
     public Button sendButton;
 
-
     public void onClickBtnSend(ActionEvent actionEvent) {
         textArea.appendText(textField.getText() + "\n");
         textField.requestFocus();
         textField.clear();
-
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
