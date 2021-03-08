@@ -49,6 +49,17 @@ public class Server{
         }
     }
 
+    //Метод, посылающий сообщение конкретному пользователю и отправителю
+
+    public void toNickNameMsg(ClientHandler sender, String addressat, String msg) {
+        String message = String.format("%s : %s", sender.getNickName(), msg);
+        for (ClientHandler client : clients) {
+            if (client.getNickName().equals(addressat))
+            client.sendMsg(message);
+        }
+        sender.sendMsg(message);
+    }
+
     public void subscribe(ClientHandler clientHandler) {
         clients.add(clientHandler);
     }

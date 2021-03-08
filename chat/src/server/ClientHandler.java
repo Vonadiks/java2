@@ -44,12 +44,23 @@ public class ClientHandler {
                     //цикл работы
                     while (true) {
                         String str = in.readUTF();
+
+
                         if (str.equals("/end")) {
                             break;
                         }
 //                            System.out.println("Клиент " + str);
 //                            out.writeUTF("echo: " + str);
-                        server.broadcastMsg(this, str);
+                        // добавлена обработка ключа "/w"
+                        if (str.startsWith("/w")){
+                            String addressat = str.split(" ", 3)[1];
+                            String msg = str.split(" ", 3)[2];
+                            server.toNickNameMsg(this, addressat, msg);
+                        } else {
+                            server.broadcastMsg(this, str);
+                        }
+
+
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

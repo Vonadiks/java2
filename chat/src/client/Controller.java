@@ -43,6 +43,7 @@ public class Controller implements Initializable {
 
     private boolean authenticated;
     private String nickName;
+    private String toNickName;
     private final String TITLE = "justБлаБлашка";
 
     public void setAuthenticated(boolean authenticated){
@@ -116,6 +117,7 @@ public class Controller implements Initializable {
                                 break;
                             }
                             textArea.appendText(str + "\n");
+
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

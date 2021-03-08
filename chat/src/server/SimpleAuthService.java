@@ -5,7 +5,7 @@ import java.util.List;
 
 public class SimpleAuthService implements AuthService{
 
-    private class UserData {
+    class UserData {
         String login;
         String password;
         String nickName;
@@ -17,7 +17,7 @@ public class SimpleAuthService implements AuthService{
         }
     }
 
-    List<UserData> users;
+    public List<UserData> users;
 
     public SimpleAuthService() {
         users = new ArrayList<>();
