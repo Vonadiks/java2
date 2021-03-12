@@ -4,6 +4,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 
 public class ClientHandler {
     private Server server;
@@ -29,6 +31,7 @@ public class ClientHandler {
                     while (true) {
                         String str = in.readUTF();
                         if (str.startsWith("/auth")) {
+                            socket.setSoTimeout(120000);
                             String[] token = str.split("\\s");
                             if (token.length <3){
                                 continue;
@@ -42,6 +45,7 @@ public class ClientHandler {
                                     sendMsg("/authok " + nickName);
                                     server.subscribe(this);
                                     System.out.println("Клиент " + nickName + " подключился");
+                                    socket.setSoTimeout(0);
                                     break;
                                 } else {
                                     sendMsg("С данной учетной записью уже зашли");
